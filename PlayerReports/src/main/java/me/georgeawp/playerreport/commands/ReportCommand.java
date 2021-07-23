@@ -71,7 +71,9 @@ public class ReportCommand implements CommandExecutor {
 
 
                     for (Player staff : Bukkit.getOnlinePlayers()) {
-                        if (staff.hasPermission("playerreport.view")) {
+                        if (!staff.hasPermission("playerreport.view")) {
+                            return true;
+                        } else {
                             staff.sendMessage(ChatColor.translateAlternateColorCodes('&' , report));
                         }
                     }
