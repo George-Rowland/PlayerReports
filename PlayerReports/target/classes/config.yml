@@ -1,0 +1,7 @@
+report:
+
+reportcreate:
+  created: "&fA report has been created and staff members have been alerted. &aThank's for reporting"
+  no-permission: "&cSorry, you do not have permission to use this command &7(playerreport.create)"
+  cooldown : 1
+# [IMPORTANT] cooldown is in minutes, value must be a whole number (i.e 1 2 3 4 5 - not 1.5)

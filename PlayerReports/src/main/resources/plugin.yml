@@ -1,0 +1,15 @@
+name: PlayerReport
+version: ${project.version}
+main: me.georgeawp.playerreport.PlayerReport
+api-version: 1.16
+authors: [ GeorgeAWP ]
+description: A command which allows players to report rule breakers to staff
+
+commands:
+  report:
+    description: The command used to report players
+    usage: /<command>
+
+  playerreport:
+    description: The main command for the plugin
+    usage: /<command>
