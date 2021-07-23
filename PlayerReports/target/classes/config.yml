@@ -5,3 +5,7 @@ reportcreate:
   no-permission: "&cSorry, you do not have permission to use this command &7(playerreport.create)"
   cooldown : 1
 # [IMPORTANT] cooldown is in minutes, value must be a whole number (i.e 1 2 3 4 5 - not 1.5)
+
+reload:
+  error: "&cSorry, you do not have permission to use this command!(InformationPlus.admin)"
+  message: "&a[PlayerReports] Configuration has been reloaded!"

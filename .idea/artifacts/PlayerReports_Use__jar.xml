@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="PlayerReports(Use):jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PlayerReports_Use__jar</output-path>
+    <root id="archive" name="PlayerReports(Use).jar">
+      <element id="module-output" name="report" />
+    </root>
+  </artifact>
+</component>

@@ -1,7 +1,7 @@
 name: PlayerReport
 version: 1.0
 main: me.georgeawp.playerreport.PlayerReport
-api-version: 1.16
+api-version: 1.13
 authors: [ GeorgeAWP ]
 description: A command which allows players to report rule breakers to staff
 

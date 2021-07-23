@@ -41,8 +41,6 @@ public class ReportCommand implements CommandExecutor {
                 }
 
                 final int cooldownTime = PlayerReport.getInstance().config.getInt("reportcreate.cooldown");
-
-
                 if (cooldowns.containsKey(p.getName())) {
                     // player is in hashmap
                     if (cooldowns.get(p.getName()) > System.currentTimeMillis()) {
@@ -53,20 +51,38 @@ public class ReportCommand implements CommandExecutor {
 
                     }
                 }
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', PlayerReport.getInstance().config.getString("reportcreate.created")));
-                cooldowns.put(p.getName(), System.currentTimeMillis() + (cooldownTime * 1000 * 60));
 
-                String report = "&c[REPORT] &fFrom " + p.getDisplayName() + ": ";
-                for (String s : args) {
-                    report = report + s + " ";
-                }
+                if (p.getServer().getPlayer(args[0]) != null) {
+                    // /player [name] where name = online player
+                    Player reported = p.getServer().getPlayer(args[0]);
+
+                    StringBuilder msgBuilder = new StringBuilder();
+                    for (int i = 1; i < args.length; ++i) {
+                        msgBuilder.append(args[i]).append(" ");
+                    }
+                    String reason = msgBuilder.toString().trim();
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&f[&c[REPORT]&f] &7You have reported &a" + args[0] + " &7for the reason: &a" + reason));
+                    cooldowns.put(p.getName(), System.currentTimeMillis() + (cooldownTime * 1000 * 60));
+
+                    String report = "&c[REPORT] &fFrom &a" + p.getDisplayName() + ": ";
+                    for (String s : args) {
+                        report = report + "&c" + s + "&7 ";
+                    }
 
 
-                for (Player staff : Bukkit.getOnlinePlayers()) {
-                    if (staff.hasPermission("playerreport.view")) {
-                        staff.sendMessage(ChatColor.translateAlternateColorCodes('&' , report));
+                    for (Player staff : Bukkit.getOnlinePlayers()) {
+                        if (staff.hasPermission("playerreport.view")) {
+                            staff.sendMessage(ChatColor.translateAlternateColorCodes('&' , report));
+                        }
                     }
                 }
+
+                if (p.getServer().getPlayer(args[0]) == null) {
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&' , "&6That player is not online! &cUsage:/report [player] [reason]"));
+                    return true;
+                }
+
+
 
                 return true;
             }
