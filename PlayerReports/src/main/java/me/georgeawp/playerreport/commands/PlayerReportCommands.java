@@ -31,7 +31,7 @@ public class PlayerReportCommands implements CommandExecutor {
 
             }
             if(args[0].equalsIgnoreCase("reload")) {
-                if (sender.hasPermission("InformationPlus.admin")) {
+                if (sender.hasPermission("playerreport.admin")) {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', PlayerReport.getInstance().config.getString("reload.message")));
                     PlayerReport.getInstance().reloadConfiguration();
                 } else {
